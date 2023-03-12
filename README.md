@@ -17,17 +17,17 @@ A simple pin generator which will generate a 4 digit pin that should meet the fo
 
 After installation navigate to:
 
-    appliction-url/generator/pins/
+    application-url/generator/pins/
 
-Once loaded just hit the button to begin generating pins
+Once loaded just hit the button to start generating pins
 
 ## Endpoints
 ##### Will check if its a palindrome or not.
-    appliction-url/generator/pins/palindrome/(pin here)
+    application-url/generator/pins/palindrome/(pin here)
 ##### Will check if its a repeating number or not.
-    appliction-url/generator/pins/repeating/(pin here)
+    application-url/generator/pins/repeating/(pin here)
 ##### Will check if its a sequential number or not.
-    appliction-url/generator/pins/sequential/(pin here)
+    application-url/generator/pins/sequential/(pin here)
 
 
 ## Roadmap
