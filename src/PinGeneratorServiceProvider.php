@@ -23,7 +23,6 @@
                 if (! class_exists('CreatePinsTable')) {
                     $this->publishes([
                         __DIR__ . '/../database/migrations/create_pins_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_pins_table.php'),
-                        // you can add any number of migrations here
                     ], 'migrations');
 
                 }

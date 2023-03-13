@@ -89,6 +89,17 @@
         }
     
         /** @test */
+        function is_a_descending_sequential_number()
+        {
+            $pin = Pin::factory()->create([
+                'pin' => '8765',
+            ]);
+        
+            $this->get(route('pins.sequential', $pin->pin))
+                ->assertSee('YES');
+        }
+        
+        /** @test */
         function is_not_a_sequential_number()
         {
             $pin = Pin::factory()->create([
