@@ -95,11 +95,10 @@
 
 
             // DESCENDING SEQUENCE
-            error_log($pin);
             $x = '';
             foreach($digits as $digit){
 
-                error_log($x.' (x)::(digit) '.$digit);
+                //error_log($x.' (x)::(digit) '.$digit);
                 if($digit == $x){
                     return false;
                 }
