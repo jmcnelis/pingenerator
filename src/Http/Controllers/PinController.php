@@ -53,12 +53,9 @@
 
         public function isNotPalindrome($pin){
 
-            $digits = str_split($pin);
+            if($pin == strrev($pin)){ return false; }
 
-            if( $digits[0] != $digits[3] ){ return true; }
-            if( $digits[1] != $digits[2] ){ return true; }
-
-            return false;
+            return true;
 
         }
 
