@@ -31,17 +31,13 @@
 
             $pin = new Pin;
             $pin->generate();
-            //error_log('> '.$pin->get());
+
             if($this->isNotPalindrome($pin->get())){
-                //error_log('IS NOT A PALINDROME CONTINUE!');
 
                 if($this->isNotSequential($pin->get())){
-                    //error_log('IS NOT SEQUENTIAL CONTINUE!');
 
                     if($this->isNotRepeating($pin->get())) {
-                        //error_log('IS NOT A PALINDROME CONTINUE!');
-                        
-                        //error_log('SAVE PIN!');
+
                         $pin->create([
                             'pin'     => $pin->get(),
                         ]);
@@ -62,7 +58,6 @@
             if( $digits[0] != $digits[3] ){ return true; }
             if( $digits[1] != $digits[2] ){ return true; }
 
-            //IT IS A PALINDROME
             return false;
 
         }
@@ -77,28 +72,20 @@
 
             $digits = str_split($pin);
 
-            //error_log(' ');
-            //error_log(print_r($digits,1));
-
-
-            // ASCENDING SEQUENCE
             $x = '';
             foreach($digits as $digit){
 
-                //error_log($x.'(x)::(digit)'.$digit);
+
                 if($digit == $x){
                     return false;
                 }
                 $x = $digit;
                 $x++;
             }
-
-
-            // DESCENDING SEQUENCE
+            
             $x = '';
             foreach($digits as $digit){
-
-                //error_log($x.' (x)::(digit) '.$digit);
+                
                 if($digit == $x){
                     return false;
                 }
@@ -120,14 +107,10 @@
 
             $digits = str_split($pin);
 
-            // error_log(' ');
-            // error_log(print_r($digits,1));
-
             $x = '';
             
             foreach($digits as $digit){
-
-                //error_log($x.'::'.$digit);
+                
                 if($digit == $x){
                     return false;
                 }
