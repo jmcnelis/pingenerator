@@ -56,7 +56,7 @@
         }
     
         /** @test */
-        function is_not_a_palindrome()
+        function is_not_a_palindrome_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1234',
@@ -67,7 +67,7 @@
         }
 
         /** @test */
-        function is_a_palindrome()
+        function is_a_palindrome_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1221',
@@ -78,7 +78,7 @@
         }
     
         /** @test */
-        function is_a_sequential_number()
+        function is_a_sequential_number_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1231',
@@ -89,7 +89,7 @@
         }
     
         /** @test */
-        function is_a_descending_sequential_number()
+        function is_a_descending_sequential_number_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '8765',
@@ -100,7 +100,7 @@
         }
         
         /** @test */
-        function is_not_a_sequential_number()
+        function is_not_a_sequential_number_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1427',
@@ -111,7 +111,7 @@
         }
     
         /** @test */
-        function is_not_a_repeating_number()
+        function is_not_a_repeating_number_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1235',
@@ -122,7 +122,7 @@
         }
 
         /** @test */
-        function is_a_repeating_number()
+        function is_a_repeating_number_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1266',

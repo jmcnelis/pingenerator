@@ -16,5 +16,12 @@
             $pin = Pin::factory()->create(['pin' => '1234']);
             $this->assertEquals('1234', $pin->pin);
         }
+    
+        /** @test */
+        function a_palindrome()
+        {
+            $pin = Pin::factory()->create(['pin' => '123321']);
+            $this->assertEquals(true, Pin::isPalindrome($pin->pin));
+        }
 
     }
