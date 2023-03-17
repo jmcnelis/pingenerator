@@ -51,17 +51,9 @@
             return redirect(route('pins.index'));
         }
 
-        public function isNotPalindrome($pin){
-
-            if($pin == strrev($pin)){ return false; }
-
-            return true;
-
-        }
-
         public function palindrome($pin){
 
-            return view('pingenerator::pins.palindrome', ['outcome' => $this->isNotPalindrome($pin)]);
+            return view('pingenerator::pins.palindrome', ['outcome' => Pin::isPalindrome($pin)]);
 
         }
 
