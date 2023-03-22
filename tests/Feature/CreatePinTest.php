@@ -9,17 +9,6 @@
     class CreatePinTest extends TestCase
     {
         use RefreshDatabase;
-        
-        /** @test */ // TODO: return to this as im not sure why it keeps failing.
-//        function a_pin_requires_a_number()
-//        {
-//            $this->withoutExceptionHandling();
-//
-//            $this->post(route('pins.store'),[
-//                'pin' => '1234'
-//            ])->assertSessionHasErrors('pin');
-//
-//        }
 
         /** @test */
         function all_pins_are_shown_via_the_index_route()
@@ -54,9 +43,21 @@
             $this->get(route('pins.show', $pin))
                 ->assertSee('1234');
         }
-    
+
         /** @test */
-        function is_not_a_palindrome()
+        function store_route_generates_a_pin()
+        {
+            $pin = Pin::factory()->create([
+                'pin' => '1266',
+            ]);
+
+            $this->get(route('pins.store', $pin->pin))
+                ->assertSee('1266');
+        }
+
+
+        /** @test */
+        function is_not_a_palindrome_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1234',
@@ -67,7 +68,7 @@
         }
 
         /** @test */
-        function is_a_palindrome()
+        function is_a_palindrome_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1221',
@@ -78,7 +79,7 @@
         }
     
         /** @test */
-        function is_a_sequential_number()
+        function is_a_sequential_number_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1231',
@@ -89,7 +90,7 @@
         }
     
         /** @test */
-        function is_a_descending_sequential_number()
+        function is_a_descending_sequential_number_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '8765',
@@ -100,7 +101,7 @@
         }
         
         /** @test */
-        function is_not_a_sequential_number()
+        function is_not_a_sequential_number_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1427',
@@ -111,7 +112,7 @@
         }
     
         /** @test */
-        function is_not_a_repeating_number()
+        function is_not_a_repeating_number_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1235',
@@ -122,7 +123,7 @@
         }
 
         /** @test */
-        function is_a_repeating_number()
+        function is_a_repeating_number_route()
         {
             $pin = Pin::factory()->create([
                 'pin' => '1266',
@@ -131,6 +132,5 @@
             $this->get(route('pins.repeating', $pin->pin))
                 ->assertSee('YES');
         }
-
         
     }

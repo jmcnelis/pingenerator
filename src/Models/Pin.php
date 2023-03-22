@@ -4,10 +4,16 @@
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
+    use Jmcnelis\PinGenerator\Traits\IsPalindrome;
+    use Jmcnelis\PinGenerator\Traits\IsRepeating;
+    use Jmcnelis\PinGenerator\Traits\IsSequential;
 
     class Pin extends Model
     {
         use HasFactory;
+        use IsPalindrome;
+        use IsRepeating;
+        use IsSequential;
 
         protected $pin;
 

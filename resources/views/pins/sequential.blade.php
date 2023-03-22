@@ -18,9 +18,9 @@
         <div class="card-body">
 
             @if ($outcome === true)
-                NO it's not.
-            @else
                 YES it is!
+            @else
+                NO it's not.
             @endif
 
         </div>

@@ -32,11 +32,11 @@
             $pin = new Pin;
             $pin->generate();
 
-            if($this->isNotPalindrome($pin->get())){
+            if(Pin::isPalindrome($pin->get())){
 
-                if($this->isNotSequential($pin->get())){
+                if(Pin::isSequential($pin->get())){
 
-                    if($this->isNotRepeating($pin->get())) {
+                    if(Pin::isRepeating($pin->get())) {
 
                         $pin->create([
                             'pin'     => $pin->get(),
@@ -51,76 +51,21 @@
             return redirect(route('pins.index'));
         }
 
-        public function isNotPalindrome($pin){
-
-            if($pin == strrev($pin)){ return false; }
-
-            return true;
-
-        }
-
         public function palindrome($pin){
 
-            return view('pingenerator::pins.palindrome', ['outcome' => $this->isNotPalindrome($pin)]);
-
-        }
-
-        public function isNotSequential($pin){
-
-            $digits = str_split($pin);
-
-            $x = '';
-            foreach($digits as $digit){
-
-
-                if($digit == $x){
-                    return false;
-                }
-                $x = $digit;
-                $x++;
-            }
-            
-            $x = '';
-            foreach($digits as $digit){
-                
-                if($digit == $x){
-                    return false;
-                }
-                $x = $digit;
-                $x--;
-            }
-
-            return true;
+            return view('pingenerator::pins.palindrome', ['outcome' => Pin::isPalindrome($pin)]);
 
         }
 
         public function sequential($pin){
 
-            return view('pingenerator::pins.sequential', ['outcome' => $this->isNotSequential($pin)]);
+            return view('pingenerator::pins.sequential', ['outcome' => Pin::isSequential($pin)]);
 
-        }
-
-        public function isNotRepeating($pin){
-
-            $digits = str_split($pin);
-
-            $x = '';
-            
-            foreach($digits as $digit){
-                
-                if($digit == $x){
-                    return false;
-                }
-                $x = $digit;
-            }
-
-
-            return true;
         }
 
         public function repeating($pin){
  
-            return view('pingenerator::pins.repeating', ['outcome' => $this->isNotRepeating($pin)]);
+            return view('pingenerator::pins.repeating', ['outcome' => Pin::isRepeating($pin)]);
         
         }
     }
