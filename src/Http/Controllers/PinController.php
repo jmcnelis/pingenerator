@@ -2,6 +2,7 @@
 
     namespace Jmcnelis\PinGenerator\Http\Controllers;
 
+    use Illuminate\Pipeline\Pipeline;
     use Illuminate\Foundation\Bus\DispatchesJobs;
     use Illuminate\Routing\Controller as BaseController;
     use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -32,22 +33,29 @@
             $pin = new Pin;
             $pin->generate();
 
-            if(Pin::isPalindrome($pin->get())){
+            $pipes = [
+                \Jmcnelis\PinGenerator\Services\Validator\Palindrome::class,
+                \Jmcnelis\PinGenerator\Services\Validator\Repeating::class,
+                \Jmcnelis\PinGenerator\Services\Validator\Sequential::class
+            ];
 
-                if(Pin::isSequential($pin->get())){
+            try {
+                
+                app(Pipeline::class)
+                    ->send($pin->get())
+                    ->through($pipes)
+                    ->thenReturn();
 
-                    if(Pin::isRepeating($pin->get())) {
-
-                        $pin->create([
-                            'pin'     => $pin->get(),
-                        ]);
-
-                    }
-
-                }
+                $pin->create([
+                    'pin'     => $pin->get(),
+                ]);
+                
+            } catch (\Exception $exception){
+                
+                error_log('NUMBER IS A DUD GET OUT OF HERE WHILE YOU STILL HAVE LEGS!');
 
             }
-            
+
             return redirect(route('pins.index'));
         }
 
