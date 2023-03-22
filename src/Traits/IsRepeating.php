@@ -6,7 +6,7 @@
 
     trait IsRepeating
     {
-        public function isRepeating($pin){
+        public static function isRepeating($pin){
 
             $digits = str_split($pin);
 

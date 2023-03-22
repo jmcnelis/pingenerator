@@ -6,7 +6,7 @@
 
     trait IsSequential
     {
-        public function isSequential($pin){
+        public static function isSequential($pin){
             $digits = str_split($pin);
 
             $x = '';
