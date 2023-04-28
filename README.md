@@ -28,18 +28,3 @@ Once loaded just hit the button to start generating pins
     application-url/generator/pins/repeating/(pin here)
 ##### Will check if its a sequential number or not.
     application-url/generator/pins/sequential/(pin here)
-
-
-##  Refactoring Roadmap
-
-After having been given some sage advice by a man much smarter than myself.
-
-The plan is to implement the following improvements to this repo.
-
-- Use Traits and Facades where possible
-- Remove everything but routing from Controllers
-- Unit Testing should only test a models expose entry points, public methods in otherwords
-    - Current testing is not technically a unit test, more an integration test as we are testing UI output
-- Dont nest if statements where possible
-    - In this scenario where we are checking a pin meets the correct criteria that would mean replacing the if statements with a Laravel pipline
-- Never leave commented out logging code in repo commits
